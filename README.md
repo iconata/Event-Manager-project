@@ -1,2 +1,2 @@
-# Task-Manager-project
-Task Manager project to learn the basics of FastAPI, Flask, PostgreSQL and JWT
+# Event Manager project
+Event Manager project to learn the basics of FastAPI, Flask, PostgreSQL, JWT, Kubernetes and Docker
