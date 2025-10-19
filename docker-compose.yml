@@ -1,0 +1,30 @@
+services:
+
+  db:
+    image: postgres:16
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      # This maps the *named volume* 'event_manager_vol' (defined below)
+      # to the *correct internal path* where Postgres stores data.
+      - event_manager_vol:/var/lib/postgresql/data
+    ports:
+      # This maps your computer's port 5432 to the container's port 5432.
+      - "5432:5432"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+# This is a TOP-LEVEL block, just like 'services'.
+# It is NOT indented under 'services'.
+volumes:
+  # This just *defines* that a volume named 'event_manager_vol' exists.
+  # Docker will manage it.
+  event_manager_vol:

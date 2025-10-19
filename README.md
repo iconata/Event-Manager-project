@@ -1,19 +1,31 @@
+Event Manager project with FastAPI, Flask, PostgreSQL, JWT, Kubernetes and Docker.
+
+To install and use explore this project:
+- Clone the repository: `git clone <project_url>`
+- Navigate into the project directory: `cd <project_name>`
+- Create a virtual environment: `uv venv`
+- Activate the virtual environment:
+	- **macOS/Linux (bash/zsh):** `source .venv/bin/activate`
+	- **Windows (CMD):** `.venv\Scripts\activate.bat`
+	- **Windows (PowerShell):** `.venv\Scripts\Activate.ps1`
+- Install dependencies: `uv sync`
+- Further steps to be added
+
+
 ## 📋 Project Progress Checklist
 
-Event Manager project to learn the basics of FastAPI, Flask, PostgreSQL, JWT, Kubernetes and Docker.
-
 ### 🟢 Milestone 1 – Project Setup & Foundations
-- [ ] Repository Initialization
-- [ ] Initialize Project with uv
-- [ ] Basic Dependency Installation
-- [ ] Directory Structure Setup
-- [ ] Bootstrap Flask Application
-- [ ] Bootstrap FastAPI Application
-- [ ] Basic CI Workflow Setup (GitHub Actions)
-- [ ] Developer Documentation – Setup Guide
+- [x] Repository Initialization
+- [x] Initialize Project with uv
+- [x] Basic Dependency Installation
+- [x] Directory Structure Setup
+- [x] Bootstrap Flask Application
+- [x] Bootstrap FastAPI Application
+- [x] Basic CI Workflow Setup (GitHub Actions)
+- [x] Developer Documentation – Setup Guide
 
 ### 🟡 Milestone 2 – Database Integration (PostgreSQL)
-- [ ] Setup PostgreSQL for Local Development
+- [x] Setup PostgreSQL for Local Development
 - [ ] Install and Configure SQLAlchemy
 - [ ] Define Database Models
 - [ ] Add Alembic for Migrations
