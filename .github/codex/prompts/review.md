@@ -26,6 +26,25 @@ Prioritize:
 9. Unnecessary complexity
 10. Deviations from the repository roadmap
 
+### Verification rules
+
+Do not state that a third-party library, GitHub Action, framework, or API
+supports or does not support a specific option, input, output, or behavior
+unless that can be verified from the checked-out repository or other
+available authoritative information.
+
+If an external API contract cannot be verified, do not classify the claim
+as "Must fix". Instead say that it needs verification against the official
+documentation.
+
+When referencing repository files, use paths such as:
+
+`.github/workflows/codex-review.yml:17`
+
+Do not create links to runner-local filesystem paths such as
+`/home/runner/work/...`, because those links are not useful in GitHub PR
+comments.
+
 Keep the architecture simple.
 
 Do not recommend adding microservices, Kubernetes, Kafka, Redis, Celery,
