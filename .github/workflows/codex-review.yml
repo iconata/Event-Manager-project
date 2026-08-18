@@ -10,6 +10,8 @@ jobs:
     name: Review with Codex
     runs-on: ubuntu-latest
 
+    if: github.event.label.name == 'codex-review'
+
     permissions:
       contents: read
 
