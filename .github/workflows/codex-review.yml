@@ -2,13 +2,15 @@ name: Codex PR Review
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [labeled]
     branches: [main]
 
 jobs:
   codex_review:
     name: Review with Codex
     runs-on: ubuntu-latest
+
+    if: github.event.label.name == 'codex-review'
 
     permissions:
       contents: read
