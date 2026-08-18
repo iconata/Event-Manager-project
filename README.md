@@ -1,4 +1,4 @@
-Event Manager project with FastAPI, Flask, PostgreSQL, JWT, Kubernetes and Docker.
+Event Manager project with FastAPI, PostgreSQL, JWT, Kubernetes and Docker.
 
 To install and use explore this project:
 - Clone the repository: `git clone <project_url>`
@@ -19,7 +19,6 @@ To install and use explore this project:
 - [x] Initialize Project with uv
 - [x] Basic Dependency Installation
 - [x] Directory Structure Setup
-- [x] Bootstrap Flask Application
 - [x] Bootstrap FastAPI Application
 - [x] Basic CI Workflow Setup (GitHub Actions)
 - [x] Developer Documentation – Setup Guide
@@ -29,14 +28,12 @@ To install and use explore this project:
 - [ ] Install and Configure SQLAlchemy
 - [ ] Define Database Models
 - [ ] Add Alembic for Migrations
-- [ ] Database Integration – Flask
 - [ ] Database Integration – FastAPI
 
 ### 🔵 Milestone 3 – User Accounts & Authentication
 - [ ] User Registration – API
 - [ ] User Registration – Web
 - [ ] Login with JWT – FastAPI
-- [ ] Session Login – Flask
 - [ ] Protect API Endpoints with JWT
 - [ ] Link Events and RSVPs to Users
 
@@ -50,16 +47,14 @@ To install and use explore this project:
 - [ ] Event Detail View – Web
 
 ### 🟤 Milestone 5 – Deployment (Docker + Kubernetes)
-- [ ] Create Dockerfile for Flask App (using uv)
 - [ ] Create Dockerfile for FastAPI App (using uv)
 - [ ] Setup PostgreSQL with Docker
 - [ ] Create docker-compose.yml for Multi-Service Setup
 - [ ] Add Healthcheck to Docker Compose
 - [ ] Kubernetes Namespace and Config Setup
 - [ ] Kubernetes Secrets for Credentials
-- [ ] Kubernetes Deployment for Flask App
 - [ ] Kubernetes Deployment for FastAPI App
 - [ ] Kubernetes StatefulSet for PostgreSQL
-- [ ] Ingress Controller for Flask & FastAPI
+- [ ] Ingress Controller for FastAPI
 - [ ] CI/CD: Build and Push Docker Images
 - [ ] CI/CD: Deploy to Kubernetes
