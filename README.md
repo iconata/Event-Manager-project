@@ -1,69 +1,60 @@
-# Event Manager
+Event Manager project with FastAPI, PostgreSQL, JWT, Kubernetes and Docker.
 
-> **Build Event Manager as a small production-style FastAPI application that can gradually evolve into a multi-tenant SaaS.**
+To install and use explore this project:
+- Clone the repository: `git clone <project_url>`
+- Navigate into the project directory: `cd <project_name>`
+- Create a virtual environment: `uv venv`
+- Activate the virtual environment:
+	- **macOS/Linux (bash/zsh):** `source .venv/bin/activate`
+	- **Windows (CMD):** `.venv\Scripts\activate.bat`
+	- **Windows (PowerShell):** `.venv\Scripts\Activate.ps1`
+- Install dependencies: `uv sync`
+- Further steps to be added
 
-Event Manager is a learning project focused on modern Python backend development. The immediate aim is to build a small, useful application with production-oriented patterns while keeping the code understandable. If the core application proves useful, it may eventually evolve into a small hosted SaaS product; it is not a commercial SaaS today.
 
-## What the application will do
+## 📋 Project Progress Checklist
 
-The initial application will eventually let users:
+### 🟢 Milestone 1 – Project Setup & Foundations
+- [x] Repository Initialization
+- [x] Initialize Project with uv
+- [x] Basic Dependency Installation
+- [x] Directory Structure Setup
+- [x] Bootstrap FastAPI Application
+- [x] Basic CI Workflow Setup (GitHub Actions)
+- [x] Developer Documentation – Setup Guide
 
-- register and log in;
-- create events;
-- list and view events;
-- update or delete events they own;
-- RSVP to events; and
-- view attendees and RSVP status.
+### 🟡 Milestone 2 – Database Integration (PostgreSQL)
+- [x] Setup PostgreSQL for Local Development
+- [ ] Install and Configure SQLAlchemy
+- [ ] Define Database Models
+- [ ] Add Alembic for Migrations
+- [ ] Database Integration – FastAPI
 
-After the MVP is useful, later SaaS evolution may add organizations or workspaces, organization membership, Owner/Admin/Member roles, tenant-isolated data, simple Free/Pro plan concepts, and hosted deployment. These are future capabilities, not part of the MVP.
+### 🔵 Milestone 3 – User Accounts & Authentication
+- [ ] User Registration – API
+- [ ] User Registration – Web
+- [ ] Login with JWT – FastAPI
+- [ ] Protect API Endpoints with JWT
+- [ ] Link Events and RSVPs to Users
 
-## Technology stack
+### 🟣 Milestone 4 – Event Management
+- [ ] Event Creation – Web
+- [ ] Event Creation – API
+- [ ] Event Listing – Web
+- [ ] Event Listing – API
+- [ ] RSVP to Event – API
+- [ ] RSVP to Event – Web
+- [ ] Event Detail View – Web
 
-- Python
-- FastAPI
-- Pydantic
-- SQLAlchemy
-- PostgreSQL
-- Alembic
-- Jinja2 for a simple server-rendered UI
-- Docker and Docker Compose
-- pytest
-- GitHub Actions
-- JWT authentication
-
-Kubernetes is not required for this project. It may be explored separately as an optional learning exercise in the future.
-
-## Architecture direction
-
-```text
-Browser / API client
-        |
-        v
-     FastAPI
-     /     \
-JSON API   Jinja2 UI
-     \     /
-   Application logic
-        |
-        v
-    SQLAlchemy
-        |
-        v
-    PostgreSQL
-```
-
-The architecture will stay deliberately simple: one FastAPI application, one database, and clear application boundaries introduced only when they are useful.
-
-## Learning goals
-
-This project is intended to teach practical REST API design, request and response validation with Pydantic, dependency injection, database sessions, ORM concepts, schema migrations, authentication and authorization, testing, containerization, CI, and a production-oriented application structure. Multi-tenancy will be studied later, after the core application works.
-
-## Development philosophy
-
-- Build one useful layer at a time.
-- Prefer a working, simple solution over premature abstraction.
-- Introduce infrastructure only when the application needs it.
-- Keep the project understandable by one developer.
-- Prioritize learning and comprehension over maximum feature count.
-
-See [the roadmap](docs/ROADMAP.md) for the planned development sequence and [the backlog revision proposal](docs/BACKLOG_REVISION.md) for the issue and milestone changes proposed after this documentation is approved.
+### 🟤 Milestone 5 – Deployment (Docker + Kubernetes)
+- [ ] Create Dockerfile for FastAPI App (using uv)
+- [ ] Setup PostgreSQL with Docker
+- [ ] Create docker-compose.yml for Multi-Service Setup
+- [ ] Add Healthcheck to Docker Compose
+- [ ] Kubernetes Namespace and Config Setup
+- [ ] Kubernetes Secrets for Credentials
+- [ ] Kubernetes Deployment for FastAPI App
+- [ ] Kubernetes StatefulSet for PostgreSQL
+- [ ] Ingress Controller for FastAPI
+- [ ] CI/CD: Build and Push Docker Images
+- [ ] CI/CD: Deploy to Kubernetes
