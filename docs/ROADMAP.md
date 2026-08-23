@@ -16,11 +16,11 @@ Planned outcomes:
 
 - typed application and database settings;
 - SQLAlchemy engine and session factory;
-- request-scoped FastAPI database sessions;
-- Alembic configuration and migrations; and
-- PostgreSQL integration testing.
+- request-scoped FastAPI database sessions.
 
-The expected implementation order begins with #52, followed by #6. Domain models follow only after this foundation exists.
+Implementation order: #52 Add application settings/configuration → #6 Install and Configure SQLAlchemy → #53 Add FastAPI database-session dependency.
+
+This milestone remains product-neutral. Domain models, migrations for those models, and persistence integration tests begin in Milestone 3.
 
 ## Milestone 3 — Accounts & Provider Workspace
 
@@ -29,10 +29,14 @@ The expected implementation order begins with #52, followed by #6. Domain models
 Planned outcomes:
 
 - User persistence;
+- Alembic configuration and an initial User-schema migration;
+- the initial Provider Workspace model and its migration;
+- PostgreSQL integration testing against the migrated User and Provider Workspace schema;
 - provider account registration;
 - JWT login and current-user authentication;
-- the initial Provider Workspace model; and
 - creation of a provider's first workspace during onboarding.
+
+Implementation order: #7 Define User model → #8 Add Alembic for Migrations → #68 Define Provider Workspace model → #23 Database Integration – FastAPI → #9 Provider Account Registration – API → #10 Login with JWT – FastAPI → #25 Protect API Endpoints with JWT → #81 Create provider workspace during onboarding.
 
 The first MVP supports a simple independent-provider model. Multi-user agency membership, invitations, and richer roles are deferred.
 

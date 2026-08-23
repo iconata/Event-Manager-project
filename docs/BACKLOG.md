@@ -21,16 +21,24 @@ All provider-owned data belongs to a Provider Workspace from the beginning.
 
 After the remaining Milestone 1 documentation work:
 
+### Milestone 2 — Persistence & Application Foundation
+
 1. #52 Add application settings/configuration
 2. #6 Install and Configure SQLAlchemy
-3. #7 Define User model
-4. #68 Define Provider Workspace model
-5. #8 Add Alembic for Migrations
-6. #53 Add FastAPI database-session dependency
-7. #23 Database Integration – FastAPI
-8. #9 Provider Account Registration – API
-9. #10 Login with JWT – FastAPI
-10. #25 Protect API Endpoints with JWT
+3. #53 Add FastAPI database-session dependency
+
+Milestone 2 is product-neutral and has no dependency on a provider-domain model.
+
+### Milestone 3 — Accounts & Provider Workspace
+
+1. #7 Define User model
+2. #8 Add Alembic for Migrations
+3. #68 Define Provider Workspace model
+4. #23 Database Integration – FastAPI
+5. #9 Provider Account Registration – API
+6. #10 Login with JWT – FastAPI
+7. #25 Protect API Endpoints with JWT
+8. #81 Create provider workspace during onboarding
 
 The domain model sequence then proceeds through Service or Package, Customer, and Booking/Party Details before CRUD workflows.
 
