@@ -1,4 +1,4 @@
-Event Manager project with FastAPI, PostgreSQL, JWT, Kubernetes and Docker.
+Event Manager project with FastAPI, PostgreSQL, JWT and Docker.
 
 To install and use explore this project:
 - Clone the repository: `git clone <project_url>`
