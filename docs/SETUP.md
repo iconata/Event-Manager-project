@@ -4,14 +4,15 @@ This guide covers the initial setup required to get the Event Manager project ru
 
 ## Prerequisites
 
-* [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+* [Docker-compatible runtime](https://www.docker.com/products/) installed and running.
 * Python 3.13
 * [uv](https://github.com/astral-sh/uv) (Python package manager)
+* Docker Compose
 
-* _If you're using MacOS:_
-  * [colima](https://colima.run/#quick-start) if you're using an older OS version and Docker Desktop is not supported
-  * `docker compose` installed through homebrew:
-    * `brew install docker-compose`
+* _For example:_
+  * [Colima](https://colima.run/#quick-start) 
+  * [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
 ### Optional
 * [DBeaver](https://dbeaver.io/) (or another database client) installed.
 
@@ -34,9 +35,18 @@ Before running the project, you must create a configuration file.
 
 The database runs in a Docker container.
 
+If you've intalled Colima, it's mandatory to execute:
+`colima start`
+otherwise the daemon will not be started.
+
 ```bash
 # Start the database in detached (background) mode
 docker compose up -d
+```
+
+```bash
+# Stop the local stack without deleting the volumes
+docker compose down
 ```
 
 ## 4. Verify containers
@@ -48,9 +58,13 @@ docker compose up -d
 * In the terminal execute:
   * `uv run fastapi dev`
 * Verify that the app is reachable by executing:
-  * `curl -i 127.0.0.1/8080/`
+  * `curl -i 127.0.0.1/8000/health`
     * The expected output should be:
-      * `127.0.0.1:52365 - "GET / HTTP/1.1" 200
+      * `HTTP/1.1 200 OK`
+      * `date: <day>, <dd mm yyyy> hh:mm:ss GMT`
+      * `server: uvicorn`
+      * `content-length: 17`
+      * `content-type: application/json`
 
 ## 6. Verify that the tests are passing locally
 * In the terminal execute:
@@ -64,6 +78,6 @@ docker compose up -d
 
 
 #### Q: The DB was build with the example env file, instead of a local copy of it.
-    A: Execute docker compose down -v to shut down the docker daemon and refer to section 2.
+    A: Execute docker compose down -v to remove the compose containers/network and deletes the named volumes.
     
 ***IMPORTANT NOTE***: _`-v` deletes the local PostgreSQL volume and all local database data_.
