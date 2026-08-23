@@ -58,12 +58,9 @@ docker compose down
 * In the terminal execute:
   * `uv run fastapi dev`
 * Verify that the app is reachable by executing:
-  * `curl -i 127.0.0.1/8000/health`
+  * `curl -i http://127.0.0.1/8000/health`
     * The expected output should be:
       * `HTTP/1.1 200 OK`
-      * `date: <day>, <dd mm yyyy> hh:mm:ss GMT`
-      * `server: uvicorn`
-      * `content-length: 17`
       * `content-type: application/json`
 
 ## 6. Verify that the tests are passing locally
@@ -73,11 +70,11 @@ docker compose down
 
 
 # Troubleshooting
-#### Q: Docker compose is not starting or the command is not recognized.
-    A: Install Docker desktop or Colima. Refer to section Prerequisites.
+**Q:** Docker compose is not starting or the command is not recognized.  
+**A:** Install Docker desktop or Colima. Refer to section Prerequisites.
 
 
-#### Q: The DB was build with the example env file, instead of a local copy of it.
-    A: Execute docker compose down -v to remove the compose containers/network and deletes the named volumes.
+**Q:** The DB was build with the example env file, instead of a local copy of it.  
+**A:** Execute docker compose down -v to remove the compose containers/network and deletes the named volumes.
     
 ***IMPORTANT NOTE***: _`-v` deletes the local PostgreSQL volume and all local database data_.

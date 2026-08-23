@@ -74,8 +74,8 @@ The FastAPI foundation is intentionally minimal. The application has a FastAPI-o
 
 Persistence and product-domain functionality have not yet been implemented. The next implementation sequence begins with application settings, SQLAlchemy configuration, and the first provider-domain models.
 
-See [the roadmap](docs/ROADMAP.md) for the milestone sequence and [the backlog](docs/BACKLOG.md) for current scope and deferred decisions.
-
+See [the roadmap](docs/ROADMAP.md) for the milestone sequence and [the backlog](docs/BACKLOG.md) for current scope and deferred decisions.  
+See [the setup guide](docs/SETUP.md) to run the project locally.
 ## Development philosophy
 
 - Build one useful layer at a time.
