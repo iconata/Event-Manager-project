@@ -1,117 +1,104 @@
 # Event Manager Roadmap
 
-This roadmap keeps Event Manager small while building it with patterns used in production Python backends. Each milestone should leave the project working and understandable before the next layer is added.
+Event Manager is being built as a small provider SaaS for children's-party animators, party agencies, and similar organizers. The roadmap keeps the architecture simple while introducing the Provider Workspace boundary before provider-owned data.
 
-## Milestone 1 — FastAPI Foundation & Cleanup
+## Milestone 1 — FastAPI Foundation & Developer Workflow
 
-**Goal:** Create a clean, consistent FastAPI-only foundation before adding application functionality.
+**Goal:** Complete the FastAPI-only foundation and establish a consistent local and CI developer workflow before persistence and product work begins.
 
-Planned work:
+Completed foundation work includes retiring Flask, adding `GET /health`, adding smoke tests, aligning Python/project metadata, and aligning CI with the uv environment. The milestone remains open until local setup documentation is current and reproducible.
 
-- retire Flask from the target architecture;
-- remove obsolete Flask application code when appropriate;
-- standardize the Python version;
-- clean project metadata;
-- ensure FastAPI starts correctly;
-- add `GET /health`;
-- create basic smoke tests;
-- align uv, CI, and documentation; and
-- establish a simple, maintainable FastAPI project structure without overdesigning it.
+## Milestone 2 — Persistence & Application Foundation
 
-## Milestone 2 — PostgreSQL & Persistence
+**Goal:** Introduce product-neutral configuration and PostgreSQL persistence.
 
-**Goal:** Introduce proper database persistence.
+Planned outcomes:
 
-Planned work:
+- typed application and database settings;
+- SQLAlchemy engine and session factory;
+- request-scoped FastAPI database sessions.
 
-- configure SQLAlchemy;
-- configure the database engine and session factory;
-- load database configuration from the environment;
-- define the initial `User`, `Event`, and `RSVP` ORM models;
-- configure Alembic and create initial migrations;
-- implement a FastAPI `get_db()` dependency;
-- verify PostgreSQL integration; and
-- add database and integration tests.
+Implementation order: #52 Add application settings/configuration → #6 Install and Configure SQLAlchemy → #53 Add FastAPI database-session dependency.
 
-Organizations are intentionally excluded from this milestone.
+This milestone remains product-neutral. Domain models, migrations for those models, and persistence integration tests begin in Milestone 3.
 
-## Milestone 3 — Users & Authentication
+## Milestone 3 — Accounts & Provider Workspace
 
-**Goal:** Implement a production-style basic authentication flow.
+**Goal:** Add authenticated provider accounts and establish Provider Workspace as the tenant boundary.
 
-Planned work:
+Planned outcomes:
 
-- user registration and Pydantic schemas;
-- password hashing;
-- login and JWT access tokens;
-- a current-user dependency;
-- protected endpoints;
-- authentication tests; and
-- basic authorization.
+- User persistence;
+- Alembic configuration and an initial User-schema migration;
+- the initial Provider Workspace model and its migration;
+- PostgreSQL integration testing against the migrated User and Provider Workspace schema;
+- provider account registration;
+- JWT login and current-user authentication;
+- creation of a provider's first workspace during onboarding.
 
-Authentication should remain small and understandable. OAuth and social login are not planned yet.
+Implementation order: #7 Define User model → #8 Add Alembic for Migrations → #68 Define Provider Workspace model → #23 Database Integration – FastAPI → #9 Provider Account Registration – API → #10 Login with JWT – FastAPI → #25 Protect API Endpoints with JWT → #81 Create provider workspace during onboarding.
 
-## Milestone 4 — Core Event Management
+The first MVP supports a simple independent-provider model. Multi-user agency membership, invitations, and richer roles are deferred.
 
-**Goal:** Produce the first actually useful Event Manager.
+## Milestone 4 — Provider Operations MVP
 
-Planned work:
+**Goal:** Build the operational core a children's-party provider can use.
 
-- create events;
-- list events and view event details;
-- update and delete events;
-- enforce owner permissions;
-- create or update RSVPs;
-- expose RSVP status and appropriate attendee counts/details; and
-- test the core API workflows.
+Planned outcomes:
 
-At the end of this milestone, the API should represent a usable MVP.
+- workspace-owned Service or Package records;
+- workspace-owned Customer records;
+- Booking and Party Details records;
+- booking creation, listing, detail, updates, and a small cancellation/archive lifecycle;
+- private operational notes and booking status;
+- workspace-scoped provider data; and
+- tenant-isolation tests.
 
-## Milestone 5 — Simple Web Experience
+Booking is the central operational concept. RSVP and generic public Event behavior are not part of the provider MVP.
 
-**Goal:** Provide a usable browser interface without introducing a separate frontend ecosystem.
+Availability and calendar capabilities may follow once the core booking workflow is useful.
 
-Use FastAPI, Jinja2, HTML, minimal CSS, and minimal JavaScript only where useful.
+## Milestone 5 — Provider Web Experience
 
-Potential work:
+**Goal:** Provide a small server-rendered interface for provider workflows.
 
-- login and registration pages;
-- event list and detail pages;
-- event creation and edit forms; and
-- RSVP controls.
+Use FastAPI, Jinja2, HTML, minimal CSS, and minimal JavaScript where useful.
 
-React, Vue, and Angular are not part of this milestone.
+Planned outcomes:
 
-## Milestone 6 — Production Readiness & First Deployment
+- login and provider registration pages;
+- provider workspace setup;
+- Service or Package management;
+- Customer management; and
+- Booking list, detail, create, and edit experiences.
 
-**Goal:** Turn the local application into something that could realistically be hosted.
+A separate SPA frontend is not planned.
 
-Planned work:
+## Milestone 6 — Production Readiness & First Pilot
 
-- create a FastAPI Dockerfile;
-- provide a PostgreSQL and FastAPI Docker Compose setup;
-- add container health checks;
-- define environment configuration;
-- run tests in CI and build a production image;
-- add basic application logging;
-- complete a first hosted deployment;
-- consider basic database backups; and
-- update setup and deployment documentation.
+**Goal:** Host the provider application for a small first pilot using a straightforward production-oriented setup.
 
-Kubernetes is not a requirement.
+Planned outcomes:
 
-## Milestone 7 — SaaS Evolution
+- a focused FastAPI container image;
+- FastAPI and PostgreSQL Docker Compose configuration;
+- container health checks;
+- production environment configuration;
+- application logging;
+- CI image builds; and
+- a documented first hosted deployment with basic backup considerations.
 
-**Goal:** Only after the core application is useful, evolve it toward a basic SaaS architecture.
+Kubernetes and distributed infrastructure are not required.
 
-Planned concepts:
+## Milestone 7 — Party Finder Foundation
 
-- an Organization, Workspace, or Tenant model;
-- organization membership;
-- Owner, Admin, and Member roles;
-- organization-scoped events;
-- tenant data isolation and authorization rules;
-- tenant-isolation tests; and
-- a simple Free/Pro subscription-plan model.
+**Goal:** After the provider MVP is proven, define a privacy-conscious read-only foundation for selected public provider data.
 
-Initially, a subscription plan may be only a database field. Payment processing is not planned; Stripe or another provider should be considered only much later if the project reaches that point.
+Planned outcomes:
+
+- explicit provider publication settings, disabled by default;
+- allow-listed public provider and service/package projections;
+- a read-only public API boundary; and
+- privacy tests that prevent customer, booking, party, notes, credential, and internal workspace data from leaking.
+
+This milestone does not include a Party Finder UI, parent accounts, reviews, rankings, inquiries, marketplace payments, or a separate service.
