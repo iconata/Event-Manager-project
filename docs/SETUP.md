@@ -58,7 +58,7 @@ docker compose down
 * In the terminal execute:
   * `uv run fastapi dev`
 * Verify that the app is reachable by executing:
-  * `curl -i http://127.0.0.1/8000/health`
+  * `curl -i http://127.0.0.1:8000/health`
     * The expected output should be:
       * `HTTP/1.1 200 OK`
       * `content-type: application/json`
