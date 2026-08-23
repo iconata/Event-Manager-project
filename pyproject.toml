@@ -3,7 +3,7 @@ name = "event-manager"
 version = "0.1.0"
 description = "SaaS for party event management, built with FastAPI."
 readme = "README.md"
-requires-python = ">=3.13, <=3.14"
+requires-python = ">=3.13, <3.14"
 dependencies = [
     "alembic>=1.16.5",
     "fastapi[standard-no-fastapi-cloud-cli]>=0.116.1",
