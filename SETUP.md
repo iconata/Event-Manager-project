@@ -6,7 +6,7 @@ This guide covers the initial setup required to get the Event Manager project ru
 
 * [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
 * [DBeaver](https://dbeaver.io/) (or another database client) installed.
-* Python 3.11+
+* Python 3.13
 * [uv](https://github.com/astral-sh/uv) (Python package manager)
 
 ## 1. Initial Configuration
